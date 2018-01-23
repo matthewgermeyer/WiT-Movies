@@ -33,5 +33,13 @@ public class Application implements CommandLineRunner {
         movieRepo.save(new Movie("Sleepless", "RomCom"));
         movieRepo.save(new Movie("The Incredibles", "Kids"));
 
+        movieRepo.save(new Movie("The Terminator", "Action"));
+        movieRepo.save(new Movie("50 First Dates", "RomCom"));
+        movieRepo.save(new Movie("Toy Story", "Kids"));
+        movieRepo.save(new Movie("The Prestige", "Drama"));
+        movieRepo.save(new Movie("Transformers", "Action"));
+        movieRepo.save(new Movie("Sleepless", "RomCom"));
+        movieRepo.save(new Movie("The Incredibles", "Kids"));
+
     }
 }
