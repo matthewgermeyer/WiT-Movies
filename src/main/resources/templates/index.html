@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" th:src="@{js/main.js}" src="../static/js/main.js"></script>
+
+</head>
+<body>
+
+<div class="container mx-auto" style="width: 900px;">
+    <h2 class="text-center"> Movies </h2>
+    <!--<button class="btn btn-success nBtn">New</button>-->
+    <div class="card">
+        <!--Movie Table-->
+        <div class="card-block">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-inverse">
+                <tr>
+                    <th class="thead-inverse">ID</th>
+                    <th class="thead-inverse">Name</th>
+                    <th class="thead-inverse">Genre</th>
+                    <th class="thead-inverse">Edit</th>
+                    <th class="thead-inverse">Delete</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="movie :${data.content}">
+                    <td th:text="${movie.id}"></td>
+                    <td th:text="${movie.name}"></td>
+                    <td th:text="${movie.description}"></td>
+                    <td><a th:href="@{findOne/(id=${movie.id})}" class="btn btn-primary eBtn">Edit</a></td>
+                    <td><a th:href="@{delete/(id=${movie.id})}" class="btn btn-danger delBtn">Delete</a></td>
+
+                </tr>
+                </tbody>
+            </table>
+            <hr/>
+
+            <!--Pagination-->
+            <ul class="nav nav-pills">
+                <li class="nav-item"
+                    th:each="i : ${#numbers.sequence(0,data.totalPages-1)}"
+                    th:classappend="${currentPage}==${i}?'active': ' '">
+                    <a th:href="@{/(page=${i})}"  th:text="${i}" class="nav-link"></a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
